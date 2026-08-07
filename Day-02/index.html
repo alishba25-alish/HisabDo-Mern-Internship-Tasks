@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Record Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <div class="logo-section">
+                <i class="fa-solid fa-graduation-cap logo-icon"></i>
+                <span class="logo-text">Student Record System</span>
+            </div>
+
+            <nav class="nav-menu">
+                <p class="menu-label">MAIN MENU</p>
+                <a href="#" class="nav-item"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#" class="nav-item active"><i class="fa-solid fa-user-group"></i> Students</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-chalkboard-user"></i> Classes</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-users"></i> Groups</a>
+
+                <p class="menu-label">ADMINISTRATION</p>
+                <a href="#" class="nav-item"><i class="fa-solid fa-book"></i> Subjects</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-briefcase"></i> Assignment</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-bookmark"></i> Library</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item"><i class="fa-solid fa-comment-dots"></i> Feedback</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+              
+        <header class="top-navbar">
+          <div class="user-profile-section">
+            <i class="fa-solid fa-gear nav-icon" title="Settings"></i>
+            <i class="fa-solid fa-bell nav-icon" title="Notifications"></i>
+          <div class="user-avatar">
+            <img src="https://ui-avatars.com/api/?name=Admin&background=6366f1&color=fff" alt="User">
+            <span class="name">Admin</span>
+        </div>
+    </div>
+</header>
+
+            <div class="content-body">
+                
+                <div class="page-header">
+                    <div>
+                        <h1>Students</h1>
+                        <p class="student-count"><i class="fa-solid fa-user"></i> Total: <span id="total-count">0</span></p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-secondary"><i class="fa-solid fa-download"></i> Export data</button>
+                        <button class="btn btn-primary" id="open-modal-btn"><i class="fa-solid fa-plus"></i> Add student</button>
+                    </div>
+                </div>
+                
+                <div class="toolbar">
+                   <div class="filters-group">
+                        <input type="text" id="search-input" class="filter-input" placeholder="Search by name...">
+                        <input type="number" id="filter-marks" class="filter-input" placeholder="Min Marks (0-100)...">
+                        <button class="btn-filter" id="reset-btn"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                </div>
+
+                <div class="quick-actions">
+                  <button class="icon-btn" title="Tag"><i class="fa-solid fa-tag"></i></button>
+                <button class="icon-btn" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
+                </div>
+            </div>
+
+                <div class="table-container card">
+                    <table class="data-table">
+                        <thead>
+                              <tr>
+                                 <th>ID</th>
+                                 <th>STUDENT</th>
+                                 <th>EMAIL</th>
+                                 <th>COURSE</th>
+                                 <th>MARKS</th>
+                             </tr>
+                        </thead>
+                        <tbody id="student-table-body">
+                        </tbody>
+                    </table>
+
+                    <div class="table-pagination">
+                        <span>1 to <span id="pagination-count">0</span> of <span id="pagination-total">0</span></span>
+                        <div class="pagination-controls">
+                            <button class="page-btn"><i class="fa-solid fa-angles-left"></i></button>
+                            <button class="page-btn"><i class="fa-solid fa-angle-left"></i></button>
+                            <span>Page 1 of 1</span>
+                            <button class="page-btn"><i class="fa-solid fa-angle-right"></i></button>
+                            <button class="page-btn"><i class="fa-solid fa-angles-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="student-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Add New Student</h2>
+                <button class="close-btn" id="close-modal-btn">&times;</button>
+            </div>
+            <form id="student-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="e.g. Bilal Ali" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="e.g. bilalali@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Course</label>
+                    <input type="text" id="course" placeholder="e.g. Software Engineering" required>
+                </div>
+                <div class="form-group">
+                    <label>Marks (0 - 100)</label>
+                    <input type="number" id="marks" placeholder="e.g. 85" min="0" max="100" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancel-modal-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
